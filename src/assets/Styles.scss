@@ -1,0 +1,259 @@
+$text: #240a34;
+$purple: #5f5d9c;
+$white: #fafafa;
+$lightWhite: rgba(95, 93, 156, 0.15);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: 400 14px "Poppins", "Vazirmatn", sans-serif;
+  color: #240a34;
+}
+
+// Mixins
+@mixin Text($weight, $size, $lineHeight) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHeight;
+}
+
+// TheNavbar.vue
+header {
+  width: 100%;
+  position: fixed;
+  background-color: $lightWhite;
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    .brand {
+      @include Text(600, 18px, 27px);
+    }
+    ul {
+      display: flex;
+      gap: 15px;
+    }
+  }
+}
+// Home.vue
+.home-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 15px;
+  gap: 5px;
+
+  h1 {
+    text-transform: capitalize;
+    text-align: center;
+    @include Text(600, 22px, 33px);
+  }
+  p {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  a {
+    background-color: #5f5d9c;
+    padding: 5px 15px;
+    border-radius: 4px;
+    color: $white;
+  }
+}
+
+// ListBase.vue
+.list_base-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-inline: 15px;
+
+  .list_base_container-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    h3 {
+      color: $purple;
+      @include Text(600, 20px, 30px);
+    }
+    button:hover {
+      background-color: $lightWhite;
+    }
+  }
+  .list_base_container-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    .list_base_container-item {
+      background-color: $lightWhite;
+      padding: 15px;
+      border-radius: 8px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      input:first-child {
+        margin-bottom: 10px;
+      }
+      h5,
+      input {
+        @include Text(500, 16px, 24px);
+      }
+
+      &:hover {
+        .todos_item-actions {
+          display: flex;
+        }
+      }
+      .todos_item-actions {
+        position: absolute;
+        bottom: 25px;
+        right: 30px;
+        display: flex;
+        gap: 15px;
+        display: none;
+        &.middle {
+          bottom: 50%;
+          transform: translateY(50%);
+        }
+        border-radius: 8px;
+        button {
+          color: $white;
+          background-color: $purple;
+          padding: 5px 25px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      .confirm_msg-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        background-color: $lightWhite;
+        backdrop-filter: blur(4px);
+        gap: 5px;
+        border-radius: 8px;
+
+        .confirm_msg-actions {
+          display: flex;
+          gap: 15px;
+
+          .btn-white {
+            padding: 2px 15px;
+            &:hover {
+              background-color: $purple;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Globals
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.text-muted {
+  color: rgba($color: $text, $alpha: 0.5);
+  white-space: wrap;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+
+.btn {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  border-radius: 3px;
+  &.btn-white {
+    background-color: $white;
+  }
+}
+
+input,
+textarea {
+  border: 0;
+  background-color: $white;
+  outline: 0;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+textarea {
+  resize: vertical;
+  padding-bottom: 50px;
+}
+.todos-view,
+.collections-view {
+  padding-block: 100px;
+}
+
+// Media queries
+
+@media (width > 768px) {
+  .home-view {
+    h1 {
+      @include Text(600, 48px, 72px);
+    }
+    p {
+      @include Text(500, 18px, 27px);
+    }
+
+    a {
+      background-color: #5f5d9c;
+      padding: 10px 25px;
+      border-radius: 4px;
+      color: $white;
+    }
+  }
+}
+@media (width > 1200px) {
+  header {
+    nav {
+      padding: 15px 0;
+    }
+  }
+
+  .list_base-container {
+    padding: 0;
+    .list_base_container-list {
+      .list_base_container-item {
+        .confirm_msg-container {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          .confirm_msg-actions {
+            .btn-white {
+              padding: 5px 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
