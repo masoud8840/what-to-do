@@ -7,6 +7,9 @@
         <li>
           <router-link :to="{ name: 'CollectionsList' }">Collections</router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Signup' }" class="btn btn-primary">Create Account</router-link>
+        </li>
       </ul>
     </nav>
   </header>

@@ -36,6 +36,7 @@ header {
     ul {
       display: flex;
       gap: 15px;
+      align-items: center;
     }
   }
 }
@@ -166,7 +167,37 @@ header {
   }
 }
 
+// Signup.vue
+.signup-view {
+  .signup-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: $lightWhite;
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    button {
+      justify-content: center;
+      padding: 10px 0;
+    }
+    h5 {
+      color: $purple;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+}
+
 // Globals
+.input-group {
+  display: flex;
+  gap: 7px;
+  &.col {
+    flex-direction: column;
+  }
+}
 .container {
   width: 100%;
   max-width: 1200px;
@@ -193,6 +224,11 @@ ul {
   &.btn-white {
     background-color: $white;
   }
+  &.btn-primary {
+    background-color: $purple;
+    color: $white;
+    padding: 5px 15px;
+  }
 }
 
 input,
@@ -209,12 +245,12 @@ textarea {
   padding-bottom: 50px;
 }
 .todos-view,
-.collections-view {
+.collections-view,
+.signup-view {
   padding-block: 100px;
 }
 
 // Media queries
-
 @media (width > 768px) {
   .home-view {
     h1 {

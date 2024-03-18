@@ -25,10 +25,19 @@ const routes = [
       title: "What To Do | Collections",
     },
   },
+
+  {
+    path: "/signup",
+    name: "Signup",
+    component: () => import("../views/Signup.vue"),
+    meta: {
+      title: "What To Do | Creating Account",
+    },
+  },
 ];
 
 const router = createRouter({ history: createWebHistory(), routes });
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   document.title = to.meta.title;
   next();
 });
