@@ -31,7 +31,7 @@ const routes = [
     name: "Signup",
     component: () => import("../views/Signup.vue"),
     meta: {
-      title: "What To Do | Creating Account",
+      title: "What To Do | Account",
     },
   },
 ];

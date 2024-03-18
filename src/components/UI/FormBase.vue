@@ -1,5 +1,5 @@
 <template>
-  <form class="signup-form container">
+  <form class="signup-form">
     <section
       class="input-group col"
       v-if="props.availableFields.includes('email')"
@@ -21,15 +21,23 @@
       <label for="userConfirmPassword">Confirm Password</label>
       <input type="email" name="userConfirmPassword" id="userConfirmPassword" />
     </section>
-    <button type="submit" class="btn btn-primary">Create Account</button>
+    <button type="submit" class="btn btn-primary">
+      {{ props.buttonLabel }}
+    </button>
     <h5>• something went wrong!</h5>
+    <slot name="extras"></slot>
   </form>
 </template>
+
 <script setup>
 const props = defineProps({
   availableFields: {
     type: Array,
     default: ["email", "password"],
+  },
+  buttonLabel: {
+    type: String,
+    default: "Create Account",
   },
 });
 </script>
